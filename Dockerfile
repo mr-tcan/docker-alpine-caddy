@@ -4,7 +4,7 @@ RUN apk add --no-cache git
 
 ARG SERVER_REPO="github.com/mholt/caddy"
 ARG BUILDS_REPO="github.com/caddyserver/builds"
-ARG VERSION="git"
+ARG VERSION="0.10.10"
 
 # Get Caddy source code and dependencies
 RUN go get -u ${SERVER_REPO} \
@@ -12,7 +12,7 @@ RUN go get -u ${SERVER_REPO} \
 
 # List of desired plugins
 # Empty or repos separated with spaces: "user/repo anotheruser/anotherrepo"
-ARG PLUGINS="nicolasazrak/caddy-cache hacdias/caddy-minify epicagency/caddy-expires"
+ARG PLUGINS
 
 RUN set -ex \
     && if [[ ! -z "${PLUGINS}" ]]; then \
@@ -39,11 +39,11 @@ RUN set -ex \
 RUN go run build.go -goos=linux -goarch=amd64 \
     && mv caddy /usr/local/bin
 
-FROM tscangussu/alpine-tini:0.16
+FROM tscangussu/tini:0.16.1-alpine
 
 LABEL LABEL maintainer="Thiago Cangussu <thiago.cangussu@gmail.com>" \
       description="Caddy Server based on Alpine Linux." \
-      version="v0.10.x"
+      version="v0.10.10"
 
 ENV CADDYPATH /etc/caddy
 ENV ROOT /srv/www/html
