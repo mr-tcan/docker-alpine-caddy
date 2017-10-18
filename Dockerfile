@@ -12,6 +12,20 @@ RUN go get -u ${SERVER_REPO} \
 
 # List of desired plugins
 # Empty or repos separated with spaces: "user/repo anotheruser/anotherrepo"
+# Plugins list:
+# - casbin/caddy-authz: middleware that blocks or allows requests based on ACP.
+# - nicolasazrak/caddy-cache: caching middleware.
+# - captncraig/cors: Cross Origin Resource Sharing middleware.
+# - epicagency/caddy-expires: add expires headers to certain paths.
+# - hacdias/filemanager/caddy/filemanager: provides a file managing interface.
+# - abiosoft/caddy-git: makes it possible to deploy with a simple git push.
+# - hacdias/filemanager/caddy/hugo: web interface to manage the Hugo websites.
+# - SchumacherFM/mailout: SMTP client email middleware with PGP encryption.
+# - hacdias/caddy-minify: plugin that provides file minification.
+# - miekg/caddy-prometheus: Prometheus metrics middleware.
+# - Xumeiquer/nobots: protect your website against web crawlers and bots.
+# - tarent/loginsrv: login directive. Play together with the http.jwt middleware
+# - BTBurke/caddy-jwt: JWT middleware.
 ARG PLUGINS
 
 RUN set -ex \
