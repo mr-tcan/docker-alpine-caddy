@@ -84,10 +84,15 @@ VOLUME ${CADDYPATH}
 
 WORKDIR ${CADDYROOT}
 
+COPY docker-caddy-entrypoint /usr/local/bin
+
 # Expose ports 80 & 443 for production, 2015 for development (Caddy's default).
 EXPOSE 80 443 2015
 
 # Run Caddy as non-root user.
 USER www-data
 
-CMD ["caddy", "-http2"]
+# Run docker-caddy-entrypoint after tini has been started as PID 1.
+ENTRYPOINT ["tini", "--", "docker-caddy-entrypoint"]
+
+CMD ["caddy"]
