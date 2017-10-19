@@ -1,0 +1,7 @@
+:2015
+
+gzip
+
+log stdout
+
+errors stdout

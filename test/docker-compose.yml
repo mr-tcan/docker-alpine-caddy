@@ -1,0 +1,15 @@
+version: "3.3"
+services:
+  caddy:
+    build: ../
+    environment:
+      CADDYROOT: "/srv/www/html"
+    ports:
+      - "2015:2015"
+    volumes:
+      - type: bind
+        source: ./Caddyfile
+        target: /srv/www/html/Caddyfile
+      - type: bind
+        source: ./index.html
+        target: /srv/www/html/index.html
