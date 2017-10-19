@@ -55,9 +55,10 @@ RUN go run build.go -goos=linux -goarch=amd64 \
 
 FROM tscangussu/tini:0.16.1-1.alpine
 
-LABEL maintainer="Thiago Cangussu <thiago.cangussu@gmail.com>" \
-      description="Caddy Server based on Alpine Linux." \
-      version="v0.10.10"
+LABEL Maintainer="Thiago Cangussu <thiago.cangussu@gmail.com>" \
+      Description="Caddy Server based on Alpine Linux." \
+      Version="v0.10.10" \
+      Revision="1"
 
 ARG CADDYBIN="/usr/local/bin/caddy"
 
